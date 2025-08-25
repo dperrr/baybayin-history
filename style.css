@@ -1,0 +1,227 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #3b2a1a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 1000;
+}
+
+/* Logo styling */
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  gap: 0.5rem; /* space between logo and text */
+}
+
+.logo-img {
+  width: 40px;   /* adjust size */
+  height: 40px;
+  object-fit: contain;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.navbar ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  background-image: url("assets/images/bg2.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #6b4226;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+
+/* Intro Section */
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6rem 2rem;
+
+  /* 🔹 Background image setup */
+  background-image: url('assets/images/bg2.jpg'); /* replace with your actual image file */
+  background-size: cover;     /* makes sure image covers whole section */
+  background-position: center; /* centers the image */
+  background-repeat: no-repeat;
+  
+
+  color: #6b4226; 
+}
+
+.intro-text {
+  flex: 1;
+  margin-right: 2rem;
+}
+
+.intro-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #6b4226; 
+}
+
+.intro-text p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.intro-img img {
+  width: 200px;
+  border-radius: 10px;
+}
+
+.btn {
+  background: #6b4226;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background: #3b2a1a;
+}
+
+/* Responsive YouTube video */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  border-radius: 10px;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Content Sections */
+.content {
+  padding: 6rem 2rem;
+  text-align: center;
+  background: #fff;
+}
+
+.content.alt {
+  background: #f8f5f2;
+}
+
+.content h2 {
+  margin-bottom: 1rem;
+  color: #6b4226;
+}
+
+.content p {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Game Cards */
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.game-card {
+  background: #f4efe9;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.game-card h3 {
+  margin-bottom: 1rem;
+}
+
+.game-card button {
+  margin-top: 1rem;
+  background: #6b4226;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.game-card button:hover {
+  background: #3b2a1a;
+}
+
+/* Footer */
+footer {
+  background: #3b2a1a;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
