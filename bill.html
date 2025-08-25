@@ -5,26 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Government Bill</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Background for bill-page */
+    .bill-page {
+      text-align: center;
+      padding: 2rem;
+      background: 
+                  url('assets/images/bg3.jpg') no-repeat center center;
+      background-size: cover;
+    }
+
+    /* Navbar styling (optional, can go in style.css) */
+    .navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: var(--kulay-kape);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .logo-img {
+      height: 50px;
+      margin-right: 0.5rem;
+    }
+  </style>
 </head>
 <body>
 
-  <section id="bill-section" style="text-align: center;">
-  <h2>Baybayin Bill</h2>
-  <p>I-click ang button para basahin ang Baybayin Bill PDF.</p>
-  <a href="assets/bill.pdf" target="_blank">
-    <button style="padding: 10px 20px; font-size: 16px;">Buksan ang PDF</button>
-  </a>
-</section>
-
-    <!-- Back Button -->
-    <div style="margin-top: 2rem;">
-      <a href="index.html">
-        <button style="padding: 10px 20px; font-size: 1rem; border: none; background: #6b4226; color: white; border-radius: 8px; cursor: pointer;">
-          ← Back to Home
-        </button>
-      </a>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="assets/images/Logo.png" alt="Logo" class="logo-img">
+      <span>Habi ng Wika</span>
     </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#history">History</a></li>
+       <li><a href="index.html#alphabet">Alphabet</a></li>
+      <li><a href="index.html#merchandise">Baybayin Merchandise</a></li>
+      <li><a href="bill.html">Government Bill</a></li>
+    </ul>
+  </nav>
+
+
+
+  <!-- Filler -->
+  <section class="bill-page">
+    <h2></h2>
+   
   </section>
 
+  <!-- Filler -->
+  <section class="bill-page">
+    <h2></h2>
+   
+  </section>
+
+  <!-- Page Content -->
+  <section class="bill-page">
+    <h2>Baybayin Government Bill</h2>
+    <iframe src="assets/Files/4073037114!.pdf" width="90%" height="780px" style="border: none;"></iframe>
+  </section>
+
+  
+<!-- Footer -->
+  <footer>
+    <p>© 2025 Habi ng Wika | A project for cultural reconnection</p>
+  </footer>
 </body>
 </html>
+
+

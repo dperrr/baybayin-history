@@ -5,10 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Habi ng Wika</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    html {
+      scroll-behavior: smooth; /* Enables smooth scrolling */
+    }
+  </style>
 </head>
 <body>
 
- <!-- Navbar -->
+
+<!-- Navbar -->
 <nav class="navbar">
   <div class="logo">
     <img src="assets/images/Logo.png" alt="Logo" class="logo-img">
@@ -16,12 +22,13 @@
   </div>
 
   <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="merchandise.html">Baybayin Merchandise</a></li>
-    <li><a href="bill.html">Government Bill</a></li>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#history">History</a></li>
+    <li><a href="#alphabet">Alphabet</a></li>
+    <li><a href="#merchandise">Baybayin Merchandise</a></li>
+    <li><a href="bill.html">Government Bill</a></li>    
   </ul>
 </nav>
-
 
   <!-- Hero Section -->
   <section class="hero" id="home">
@@ -35,20 +42,22 @@
   </section>
 
   <!-- Intro Section -->
-  <section class="intro">
-    <div class="intro-text">
-      <h2>Mabuhay!</h2>
-      <p>
-        Tuklasin ang isang mundo kung saan bawat titik ay may kahulugan at bawat salita ay bahagi ng ating paglalakbay.
-Malugod ka naming sasalubungin dito, kung saan ang pagmamahal sa ating kultura ay nagsasanib sa kasiyahan ng bagong kaalaman.
-Halina’t samahan kami sa isang paglalakbay upang muling mabigyang-buhay ang yaman ng Baybayin.
-      </p>
-      <button class="btn">Learn More</button>
-    </div>
-    <div class="intro-img">
-      <img src=assets/images/Logo.png alt="Sample" />
-    </div>
-  </section>
+<section class="intro">
+  <div class="intro-text">
+    <h2>Mabuhay!</h2>
+    <p>
+      Tuklasin ang isang mundo kung saan bawat titik ay may kahulugan at bawat salita ay bahagi ng ating paglalakbay.
+      Malugod ka naming sasalubungin dito, kung saan ang pagmamahal sa ating kultura ay nagsasanib sa kasiyahan ng bagong kaalaman.
+      Halina’t samahan kami sa isang paglalakbay upang muling mabigyang-buhay ang yaman ng Baybayin.
+    </p>
+    <!-- Button scrolls to Explore & Learn -->
+    <button class="btn" onclick="location.href='#games'">Alamin</button>
+  </div>
+  <div class="intro-img">
+    <img src="assets/images/Logo.png" alt="Sample" />
+  </div>
+</section>
+
 
  <!-- Baybayin History -->
 <section class="content" id="history">
@@ -82,34 +91,45 @@ Ngayong muling binubuhay, tayo’y may pagkakataong matutunan at ipagmalaki ito.
     <img src="assets/images/alphabet.jpg" alt="Baybayin Alphabet" width="500">
   </section>
 
+  <!-- Merchandise Section -->
+  <section class="content" id="merchandise">
+    <h2>Baybayin Merchandise</h2>
+    <p>
+      Dito makikita ang mga produktong nagtatampok ng Baybayin — mula sa mga kasuotan, accessories, hanggang mga dekorasyon na may makabayang disenyo.
+    </p>
+    <button class="btn" onclick="location.href='https://www.facebook.com/'">Social Media Page</button>
+
+  </section>
+
   <!-- Interactive Games Section -->
   <section class="content" id="games">
     <h2>Explore & Learn</h2>
     <p>
-      Make learning fun with interactive games and activities! Choose a mode below:
+      Gawing mas masaya ang pag-aaral sa pamamagitan ng mga interaktibong laro at aktibidad! Piliin ang isang mode sa ibaba:
+
     </p>
 
     <div class="games">
       <div class="game-card">
-        <h3>📖 Story Mode</h3>
+        <h3> Story Mode</h3>
         <p>Unlock lessons step by step and progress through Baybayin.</p>
         <button onclick="loadLesson()">Start Lesson</button>
       </div>
 
       <div class="game-card">
-        <h3>🔤 Matching Mode</h3>
+        <h3> Matching Mode</h3>
         <p>Match Baybayin characters with their Filipino counterparts.</p>
         <button onclick="playMatchingGame()">Play Matching</button>
       </div>
 
       <div class="game-card">
-        <h3>🌅 Daily Word</h3>
+        <h3> Daily Word</h3>
         <p>Discover a new Baybayin word every day.</p>
         <button onclick="showDailyWord()">Show Word</button>
       </div>
 
       <div class="game-card">
-        <h3>📝 Translator</h3>
+        <h3> Translator</h3>
         <p>Translate Filipino words into Baybayin instantly.</p>
         <button onclick="translateToBaybayin()">Translate</button>
       </div>

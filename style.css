@@ -1,66 +1,111 @@
-/* Reset */
+/* ==========================
+   RESET
+========================== */
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* Navbar */
+/* ==========================
+   BAYBAYIN FONT
+========================== */
+@font-face {
+  font-family: "Baybayin";
+  src: url("assets/fonts/Baybayin.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Example usage */
+.baybayin-text {
+  font-family: "Baybayin", sans-serif;
+  font-size: 2rem;
+  color: var(--kulay-pula);
+}
+
+/* ==========================
+   COLORS & THEME
+   Inspired by banig, kahoy, and Filipino culture
+========================== */
+:root {
+  --kulay-kape: #4e342e;    /* dark brown like wood */
+  --kulay-abaka: #d7b899;   /* abaca fiber beige */
+  --kulay-pula: #b71c1c;    /* makabayan red */
+  --kulay-dilaw: #fbc02d;   /* makabayan yellow */
+  --kulay-berde: #2e7d32;   /* nature green */
+  --kulay-puti: #fffaf2;    /* warm white */
+}
+
+/* ==========================
+   NAVBAR
+========================== */
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
+  z-index: 100;
   width: 100%;
-  background: #3b2a1a;
+  background: var(--kulay-kape);
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Logo styling */
 .logo {
   display: flex;
   align-items: center;
   font-weight: bold;
-  font-size: 1.2rem;
-  gap: 0.5rem; /* space between logo and text */
+  font-size: 1.4rem;
+  gap: 0.5rem;
+  letter-spacing: 1px;
 }
 
 .logo-img {
-  width: 40px;   /* adjust size */
-  height: 40px;
+  width: 45px;
+  height: 45px;
   object-fit: contain;
+  border-radius: 50%;
+  border: 2px solid var(--kulay-dilaw);
 }
 
 .navbar ul {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .navbar ul li a {
   text-decoration: none;
-  color: white;
+  color: var(--kulay-puti);
   font-weight: bold;
+  transition: 0.3s;
 }
 
 .navbar ul li a:hover {
-  text-decoration: underline;
+  color: var(--kulay-dilaw);
 }
 
-/* Hero Section */
+/* ==========================
+   HERO SECTION
+========================== */
 .hero {
-  background-image: url("assets/images/bg2.jpg");
-  background-size: cover;
+  background-image: url("assets/images/hero-bg.jpg");
+  background-size: 700px;
   background-position: center;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #6b4226;
+  color: var(--kulay-puti);
   position: relative;
 }
 
@@ -71,7 +116,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  
 }
 
 .hero-content {
@@ -82,32 +126,21 @@
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 20px;
+  color: var(--kulay-dilaw);
+  text-shadow: 2px 2px 5px #000;
 }
 
 .hero p {
-  font-size: 1.2rem;
-  line-height: 1.6;
+  font-size: 1.3rem;
+  line-height: 1.8;
 }
 
+/* ==========================
+   INTRO SECTION
+========================== */
 
-/* Intro Section */
-.intro {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6rem 2rem;
-
-  /* 🔹 Background image setup */
-  background-image: url('assets/images/bg2.jpg'); /* replace with your actual image file */
-  background-size: cover;     /* makes sure image covers whole section */
-  background-position: center; /* centers the image */
-  background-repeat: no-repeat;
-  
-
-  color: #6b4226; 
-}
 
 .intro-text {
   flex: 1;
@@ -115,113 +148,195 @@
 }
 
 .intro-text h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #6b4226; 
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  color: var(--kulay-dilaw);
+  text-shadow: 2px 2px 5px #000;
 }
 
 .intro-text p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
+  font-size: 1.3rem;
+  line-height: 1.8;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6rem 2rem;
+  color: var(--kulay-puti);
+
+  /* background styles */
+  background-image: url("assets/images/bg3.jpg");
+  background-size: cover;      
+  background-position: center;  
+  background-repeat: no-repeat; 
+
+  border-top: 10px solid var(--kulay-pula);
+  border-bottom: 10px solid var(--kulay-berde);
 }
 
 .intro-img img {
-  width: 200px;
-  border-radius: 10px;
+  width: 220px;
+  border-radius: 120px;
+  border: 5px solid var(--kulay-kape);
 }
 
+/* ==========================
+   BUTTONS
+========================== */
 .btn {
-  background: #6b4226;
+  background: var(--kulay-pula);
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
   cursor: pointer;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 8px;
+  transition: 0.3s;
 }
 
 .btn:hover {
-  background: #3b2a1a;
+  background: var(--kulay-dilaw);
+  color: var(--kulay-kape);
 }
 
-/* Responsive YouTube video */
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 ratio */
-  height: 0;
-  overflow: hidden;
-  max-width: 100%;
-  background: #000;
-  border-radius: 10px;
-}
+/* ==========================
+   CONTENT SECTIONS
+========================== */
 
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* Content Sections */
 .content {
   padding: 6rem 2rem;
   text-align: center;
-  background: #fff;
+  background: var(--kulay-kape) url("assets/images/hero-bg.jpg") no-repeat center center;
+  background-size: cover; /* para buong section yung image */
 }
 
 .content.alt {
-  background: #f8f5f2;
+      padding: 6rem 2rem;
+  text-align: center;
+  background: var(--kulay-abaka) url("assets/images/bg3.jpg") no-repeat center center;
+  background-size: cover;
 }
 
 .content h2 {
   margin-bottom: 1rem;
-  color: #6b4226;
+  color: var(--kulay-pula);
 }
 
 .content p {
   max-width: 800px;
   margin: 0 auto;
   line-height: 1.8;
+  color: var(--kulay-puti);
 }
 
-/* Game Cards */
+/* ==========================
+   MERCHANDISE SECTION
+========================== */
+#merchandise {
+  /* Layer linear gradient over the background image */
+ 
+ background: var(--kulay-puti)url('assets/images/merch.png') no-repeat center center;
+  background-size: cover; /* Makes the image cover the whole section */
+  padding: 6rem 2rem;
+  text-align: center;
+  border-top: 8px solid var(--kulay-berde);
+  border-bottom: 8px solid var(--kulay-pula);
+}
+
+
+#merchandise h2 {
+  color: var(--kulay-pula);
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#merchandise p {
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.7;
+  color: var(--kulay-kape);
+  font-size: 1.1rem;
+}
+
+#merchandise img {
+  margin-top: 1rem;
+  width: 350px;
+  border-radius: 16px;
+  border: 4px solid var(--kulay-kape);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#merchandise img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+
+/* ==========================
+   GAMES / CARDS
+========================== */
 .games {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
 }
 
 .game-card {
-  background: #f4efe9;
+  background: var(--kulay-abaka);
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  border: 2px solid var(--kulay-kape);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .game-card h3 {
   margin-bottom: 1rem;
+  color: var(--kulay-kape);
 }
 
 .game-card button {
   margin-top: 1rem;
-  background: #6b4226;
+  background: var(--kulay-berde);
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 6px;
+  transition: 0.3s;
 }
 
 .game-card button:hover {
-  background: #3b2a1a;
+  background: var(--kulay-dilaw);
+  color: var(--kulay-kape);
 }
 
-/* Footer */
+/* ==========================
+   FOOTER
+========================== */
 footer {
-  background: #3b2a1a;
-  color: white;
+  background: var(--kulay-kape);
+  color: var(--kulay-puti);
   text-align: center;
   padding: 1rem;
+  border-top: 5px solid var(--kulay-pula);
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
 }
+
+
+
+
+/* ==========================
+   SMOOTH SCROLLING
+========================== */
+html {
+  scroll-behavior: smooth;
+}
+
+
