@@ -1,150 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Habi ng Wika</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    html {
-      scroll-behavior: smooth; /* Enables smooth scrolling */
-    }
-  </style>
-</head>
-<body>
-
-
-<!-- Navbar -->
-<nav class="navbar">
-  <div class="logo">
-    <img src="assets/images/Logo.png" alt="Logo" class="logo-img">
-    <span>Habi ng Wika</span>
-  </div>
-
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#history">History</a></li>
-    <li><a href="#alphabet">Alphabet</a></li>
-    <li><a href="#merchandise">Baybayin Merchandise</a></li>
-    <li><a href="bill.html">Government Bill</a></li>    
-  </ul>
-</nav>
-
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-text">
-      <h1>Habi ng Wika</h1>
-      <p>
-        Buhayin ang sinaunang sining ng Baybayin sa modernong panahon.  
-        Alamin, likhain, at ipagdiwang ang ating kultura!
-      </p>
-    </div>
-  </section>
-
-  <!-- Intro Section -->
-<section class="intro">
-  <div class="intro-text">
-    <h2>Mabuhay!</h2>
-    <p>
-      Tuklasin ang isang mundo kung saan bawat titik ay may kahulugan at bawat salita ay bahagi ng ating paglalakbay.
-      Malugod ka naming sasalubungin dito, kung saan ang pagmamahal sa ating kultura ay nagsasanib sa kasiyahan ng bagong kaalaman.
-      Halina’t samahan kami sa isang paglalakbay upang muling mabigyang-buhay ang yaman ng Baybayin.
-    </p>
-    <!-- Button scrolls to Explore & Learn -->
-    <button class="btn" onclick="location.href='#games'">Alamin</button>
-  </div>
-  <div class="intro-img">
-    <img src="assets/images/Logo.png" alt="Sample" />
-  </div>
-</section>
-
-
- <!-- Baybayin History -->
-<section class="content" id="history">
-  <h2>Baybayin History</h2>
-  <p>
-    Ang Baybayin ay isang sinaunang sulat ng ating mga ninuno na ginamit ng mga Tagalog at iba pang pangkat.
-    Hindi lamang ito paraan ng pagsulat, kundi sagisag din ng ating pagkakakilanlan at malikhaing diwa bilang Pilipino.
-    Sa panahon ngayon, muling binubuhay ang Baybayin sa mga digital na plataporma at sa mga kilusang pangkultura.
-  </p>
-
-  <!-- YouTube embed (responsive) -->
-  <div class="video-container">
-    <iframe 
-      src="https://www.youtube.com/embed/smvZZf1QEJA?start=346" 
-      title="Baybayin History" 
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
-  </div>
-</section>
-
-  <!-- Alphabet Section -->
-  <section class="content alt" id="alphabet">
-    <h2>The Baybayin Alphabet</h2>
-    <p>
-      Ang Baybayin Alphabet ay bahagi ng ating sinaunang pagkakakilanlan.
-Ito ang sulat ng ating mga ninuno na nagsilbing patunay ng yaman ng ating kultura at wika.
-Ngayong muling binubuhay, tayo’y may pagkakataong matutunan at ipagmalaki ito.
-    </p>
-    <img src="assets/images/alphabet.jpg" alt="Baybayin Alphabet" width="500">
-  </section>
-
-  <!-- Merchandise Section -->
-  <section class="content" id="merchandise">
-    <h2>Baybayin Merchandise</h2>
-    <p>
-      Dito makikita ang mga produktong nagtatampok ng Baybayin — mula sa mga kasuotan, accessories, hanggang mga dekorasyon na may makabayang disenyo.
-    </p>
-    <button class="btn" onclick="location.href='https://www.facebook.com/'">Social Media Page</button>
-
-  </section>
-
-  <!-- Interactive Games Section -->
-  <section class="content" id="games">
-    <h2>Explore & Learn</h2>
-    <p>
-      Gawing mas masaya ang pag-aaral sa pamamagitan ng mga interaktibong laro at aktibidad! Piliin ang isang mode sa ibaba:
-
-    </p>
-
-    <div class="games">
-      <div class="game-card">
-        <h3> Story Mode</h3>
-        <p>Unlock lessons step by step and progress through Baybayin.</p>
-        <button onclick="loadLesson()">Start Lesson</button>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habi ng Baybayin - Ancient Filipino Script</title>
+    <meta name="description" content="A web platform dedicated to preserving and celebrating the ancient Filipino script">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="min-h-screen  font-sans">
+    <nav class="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div include-html="/components/navbar.html"></div>
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-1">
+            <a href="#history" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Explore History</a>
+            <a href="#policies" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">View Policies</a>
+            <a href="#merchandise" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Browse Merchandise</a>
+            <a href="#game" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Mini Game</a>
+          </div>
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button id="mobile-menu-btn" class="p-2 text-foreground hover:bg-primary/10 rounded-md">
+              <svg id="menu-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+              <svg id="close-icon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden py-4 border-t border-border hidden">
+          <div class="flex flex-col space-y-2">
+            <a href="#history" class="px-3 py-2 text-md hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors mobile-nav-link">Explore History</a>
+            <a href="#policies" class="px-3 py-2 text-md hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors mobile-nav-link">View Policies</a>
+            <a href="#merchandise" class="px-3 py-2 text-md hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors mobile-nav-link">Browse Merchandise</a>
+            <a href="#game" class="px-3 py-2 text-md hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors mobile-nav-link">Mini Game</a>
+          </div>
+        </div>
       </div>
+    </nav>
+    <main>
+      <!-- Hero Section -->
+      <section class="hero-gradient baybayin-pattern min-h-[80vh] flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Hero Content -->
+            <div class="space-y-8">
+              <div class="space-y-4">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight"> Habi ng <span class="text-orange-500">Baybayin</span>
+                </h1>
+                <p class="text-xl text-muted-foreground leading-relaxed"> An Interactive Web Platform for cultural reconnection by CARL Villegas. </p>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-4">
+                <button class="px-6 py-3 bg-orange-500 hover:bg-primary/90 text-white rounded-lg font-medium flex items-center justify-center transition-colors"> Start Learning <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                <button class="px-6 py-3 border border-primary text-orange-500 hover:bg-primary/10 bg-transparent rounded-lg font-medium transition-colors"> Explore History </button>
+              </div>
+              <!-- Stats -->
+              <div id="stats-container" class="grid grid-cols-3 gap-6 pt-8">
+                
+              </div>
 
-      <div class="game-card">
-        <h3> Matching Mode</h3>
-        <p>Match Baybayin characters with their Filipino counterparts.</p>
-        <button onclick="playMatchingGame()">Play Matching</button>
-      </div>
-
-      <div class="game-card">
-        <h3> Daily Word</h3>
-        <p>Discover a new Baybayin word every day.</p>
-        <button onclick="showDailyWord()">Show Word</button>
-      </div>
-
-      <div class="game-card">
-        <h3> Translator</h3>
-        <p>Translate Filipino words into Baybayin instantly.</p>
-        <button onclick="translateToBaybayin()">Translate</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Habi ng Wika | A project for cultural reconnection</p>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="js/story.js"></script>
-  <script src="js/match.js"></script>
-  <script src="js/word.js"></script>
-  <script src="js/translate.js"></script>
-</body>
+            </div>
+            <!-- Hero Image/Visual -->
+            <div class="relative bg-white">
+              <div class="p-8 bg-card/80 backdrop-blur border border-primary/20 rounded-lg">
+                <div class="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg flex items-center justify-center">
+                  <img src="/assets/images/anc-fil.png" alt="Baybayin Script Characters" class="w-full h-full object-cover rounded-lg" />
+                </div>
+                <div class="mt-6 text-center">
+                  <h3 class="text-lg font-semibold text-card-foreground">Ancient Script, Modern Learning</h3>
+                  <p class="text-sm text-muted-foreground mt-2"> Experience the elegance of pre-colonial Filipino writing </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features Section -->
+      <section class="py-20 bg-muted/30 section-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4"> Discover the Beauty of Baybayin </h2>
+            <p class="text-lg text-muted-foreground max-w-2xl mx-auto"> Our platform offers comprehensive resources to learn, practice, and celebrate the ancient Filipino script that connects us to our rich cultural heritage. </p>
+          </div>
+          <!-- Where cards will be injected -->
+          <div id="features-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+      </section>
+      <!-- About Section -->
+      <section id="history" class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Content -->
+            <div class="space-y-8">
+              <div class="space-y-4">
+                <h2 class="text-3xl md:text-4xl font-bold"> Preserving Our <span class="text-orange-500">Cultural Heritage</span>
+                </h2>
+                <p class="text-lg text-muted-foreground leading-relaxed"> Baybayin, also known as Alibata, is the ancient script used by early Filipinos before Spanish colonization. This beautiful writing system represents our rich pre-colonial heritage and continues to be a symbol of Filipino identity. </p>
+              </div>
+              <!-- Dynamic Benefits -->
+              <div id="benefits" class="space-y-6"></div>
+              <button class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-medium flex items-center transition-colors"> Learn More About Baybayin <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </div>
+            <!-- Visual -->
+            <div class="space-y-6">
+              <div class="p-6 bg-card border border-border/50 rounded-lg">
+                <div class="aspect-[4/3] bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center mb-4">
+                  <img src="/assets/images/trad-fil.png" alt="Historical Baybayin Manuscript" class="w-full h-full object-cover rounded-lg" />
+                </div>
+                <h3 class="font-semibold text-card-foreground mb-2">Historical Manuscripts</h3>
+                <p class="text-sm text-muted-foreground"> Ancient documents showcase the elegance and practicality of Baybayin script </p>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="p-4 bg-card border border-border/50 rounded-lg">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-orange-500 mb-1">17</div>
+                    <div class="text-xs text-muted-foreground">Base Characters</div>
+                  </div>
+                </div>
+                <div class="p-4 bg-card border border-border/50 rounded-lg">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-accent mb-1">3</div>
+                    <div class="text-xs text-muted-foreground">Vowel Marks</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div include-html="/components/footer.html"></div>
+    <script src="/js/app.js"></script>
+    <script src="/js/components/cards.js"></script>
+    <script src="/js/components/aboutus.js"></script>
+  </body>
 </html>
