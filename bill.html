@@ -4,93 +4,231 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Government Bill</title>
-  <link rel="stylesheet" href="style.css">
   <style>
-    /* Background for bill-page */
-    .bill-page {
-      text-align: center;
-      padding: 2rem;
-      background: 
-                  url('assets/images/bg3.jpg') no-repeat center center;
-      background-size: cover;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: beige;
     }
 
-    /* Navbar styling (optional, can go in style.css) */
+    /* Sticky Navbar with Blur */
     .navbar {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-  background: var(--kulay-kape);
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .navbar ul {
-      list-style: none;
+      position: sticky;
+      top: 0;
       display: flex;
-      gap: 1.5rem;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
+      background: rgba(255, 246, 235, 0.8); /* translucent beige */
+      border-bottom: 1px solid #e0c9a6;
+      backdrop-filter: blur(8px); /* blur effect */
+      z-index: 1000;
     }
 
-    .navbar a {
-      color: white;
-      text-decoration: none;
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar-left .icon {
+      background: #d2b48c;
+      padding: 6px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .navbar-left h1 {
+      font-size: 1.2rem;
+      margin: 0;
       font-weight: bold;
     }
 
-    .logo-img {
-      height: 50px;
-      margin-right: 0.5rem;
+    .navbar-left p {
+      margin: 0;
+      font-size: 0.75rem;
+      color: #555;
+    }
+
+    .navbar-right ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar-right a {
+      text-decoration: none;
+      color: black;
+      font-weight: 500;
+    }
+
+    .navbar-right a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background: #fff;
+      padding: 2rem 4rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+      border-top: 1px solid #ddd;
+    }
+
+    .footer-left {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer-left .icon {
+      background: #d2b48c;
+      padding: 8px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+    }
+
+    .footer-left h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .footer-left p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: #555;
+    }
+
+    footer ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    footer h4 {
+      margin-bottom: 1rem;
+    }
+
+    footer ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer ul li a {
+      text-decoration: none;
+      color: black;
+      font-size: 0.9rem;
+    }
+
+    footer ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .social-icons a {
+      color: black;
+      font-size: 1.2rem;
+      text-decoration: none;
     }
   </style>
 </head>
-<body>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habi ng Baybayin - Ancient Filipino Script</title>
+    <meta name="description" content="A web platform dedicated to preserving and celebrating the ancient Filipino script">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="min-h-screen  font-sans">
+  <nav class="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      
+      <!-- ✅ Logo and Title (Left side) -->
+      <div class="flex items-center space-x-2">
+        <div class="bg-amber-600 text-white p-2 rounded-md">📜</div>
+        <div>
+          <h1 class="text-lg font-bold">Habi ng Baybayin</h1>
+          <p class="text-xs text-gray-600">Cultural Heritage</p>
+        </div>
+      </div>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">
-      <img src="assets/images/Logo.png" alt="Logo" class="logo-img">
-      <span>Habi ng Wika</span>
+      <!-- ✅ Navigation Links (Right side) -->
+      <div class="hidden md:flex items-center space-x-1">
+        <a href="index.html#history" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Explore History</a>
+        <a href="bill.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">View Policies</a>
+        <a href="merchandise.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Browse Merchandise</a>
+        <a href="minigame.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Mini Game</a>
+      </div>
     </div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#history">History</a></li>
-       <li><a href="index.html#alphabet">Alphabet</a></li>
-      <li><a href="index.html#merchandise">Baybayin Merchandise</a></li>
-      <li><a href="bill.html">Government Bill</a></li>
-    </ul>
-  </nav>
+  </div>
+</nav>
 
-
-
-  <!-- Filler -->
-  <section class="bill-page">
-    <h2></h2>
-   
-  </section>
-
-  <!-- Filler -->
-  <section class="bill-page">
-    <h2></h2>
-   
-  </section>
 
   <!-- Page Content -->
-  <section class="bill-page">
+  <section class="bill-page" style="text-align: center; padding: 2rem;">
     <h2>Baybayin Government Bill</h2>
     <iframe src="assets/Files/4073037114!.pdf" width="90%" height="780px" style="border: none;"></iframe>
   </section>
 
-  
-<!-- Footer -->
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Habi ng Wika | A project for cultural reconnection</p>
+    <!-- Left Info -->
+    <div class="footer-left">
+      <div class="icon">📜</div>
+      <div>
+        <h3>Habi ng Baybayin</h3>
+        <p>Cultural Heritage Platform</p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">
+          Preserving and celebrating the ancient Filipino script for future generations.
+        </p>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">About Baybayin</a></li>
+        <li><a href="#">Learning Resources</a></li>
+        <li><a href="#">Cultural History</a></li>
+        <li><a href="#">Community</a></li>
+      </ul>
+    </div>
+
+    <!-- Resources -->
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Character Guide</a></li>
+        <li><a href="#">Practice Exercises</a></li>
+        <li><a href="#">Historical Documents</a></li>
+        <li><a href="#">Educational Games</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div>
+      <h4>Connect With Us</h4>
+      <div class="social-icons">
+        <a href="#">🐦</a>
+        <a href="#">📘</a>
+      </div>
+    </div>
   </footer>
+
 </body>
 </html>
-
-
