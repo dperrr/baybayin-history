@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baybayin Mini Game</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-orange-50 font-sans min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo + Title -->
+        <div class="flex items-center space-x-2">
+          <div class="bg-amber-600 text-white p-2 rounded-lg">𑄝</div>
+          <h1 class="text-lg font-bold">Habi ng Baybayin</h1>
+        </div>
+        <!-- Nav Links -->
+        <div class="hidden md:flex space-x-6">
+          <a href="index.html#history" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Explore History</a>
+          <a href="bill.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">View Policies</a>
+          <a href="merchandise.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Browse Merchandise</a>
+          <a href="minigame.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Mini Game</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Game Section -->
+  <main class="flex-1 flex flex-col items-center justify-center p-6">
+    <h2 class="text-3xl font-bold text-amber-900 mb-4">Baybayin Matching Game</h2>
+    <p class="text-gray-700 mb-8">Match the Latin letter with the correct Baybayin character!</p>
+
+    <!-- Question -->
+    <div id="question" class="text-2xl font-semibold mb-6"></div>
+
+    <!-- Options -->
+    <div id="options" class="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full max-w-md"></div>
+
+    <!-- Feedback -->
+    <div id="feedback" class="mt-6 text-lg font-bold"></div>
+
+    <!-- Next Button -->
+    <button id="nextBtn" class="hidden mt-6 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700">
+      Next
+    </button>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-12 py-10">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+      
+      <!-- Logo + Description -->
+      <div>
+        <div class="flex items-center justify-center md:justify-start space-x-2 mb-2">
+          <div class="bg-amber-600 text-white p-2 rounded-lg">𑄝</div>
+          <h2 class="font-bold text-lg">Habi ng Baybayin</h2>
+        </div>
+        <p class="text-sm text-gray-600">Preserving and celebrating the ancient Filipino script for future generations.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="font-semibold mb-2">Quick Links</h3>
+        <ul class="space-y-1 text-sm">
+          <li><a href="about.html" class="hover:text-orange-600">About Baybayin</a></li>
+          <li><a href="resources.html" class="hover:text-orange-600">Learning Resources</a></li>
+          <li><a href="history.html" class="hover:text-orange-600">Cultural History</a></li>
+          <li><a href="community.html" class="hover:text-orange-600">Community</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div>
+        <h3 class="font-semibold mb-2">Resources</h3>
+        <ul class="space-y-1 text-sm">
+          <li><a href="#" class="hover:text-orange-600">Character Guide</a></li>
+          <li><a href="#" class="hover:text-orange-600">Practice Exercises</a></li>
+          <li><a href="#" class="hover:text-orange-600">Historical Documents</a></li>
+          <li><a href="minigame.html" class="hover:text-orange-600">Educational Games</a></li>
+        </ul>
+      </div>
+
+      <!-- Connect -->
+      <div>
+        <h3 class="font-semibold mb-2">Connect With Us</h3>
+        <div class="flex justify-center md:justify-start space-x-4 text-xl">
+          <a href="#"><span>🐦</span></a>
+          <a href="#"><span>📘</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center text-xs text-gray-500 mt-8">
+      © 2025 Habi ng Baybayin. All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- Game Script -->
+  <script>
+    const quizData = [
+      { letter: "A", correct: "ᜀ", options: ["ᜀ", "ᜊ", "ᜃ"] },
+      { letter: "BA", correct: "ᜊ", options: ["ᜀ", "ᜊ", "ᜐ"] },
+      { letter: "KA", correct: "ᜃ", options: ["ᜃ", "ᜎ", "ᜇ"] },
+      { letter: "LA", correct: "ᜎ", options: ["ᜃ", "ᜎ", "ᜁ"] },
+    ];
+
+    let currentQuestion = 0;
+
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const feedbackEl = document.getElementById("feedback");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function loadQuestion() {
+      feedbackEl.textContent = "";
+      nextBtn.classList.add("hidden");
+
+      const q = quizData[currentQuestion];
+      questionEl.textContent = `Which is "${q.letter}" in Baybayin?`;
+
+      optionsEl.innerHTML = "";
+      q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.className = "px-4 py-2 bg-white border rounded-lg hover:bg-amber-100 text-2xl";
+        btn.onclick = () => checkAnswer(option);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selected) {
+      const q = quizData[currentQuestion];
+      if (selected === q.correct) {
+        feedbackEl.textContent = "✅ Correct!";
+        feedbackEl.className = "mt-6 text-green-600 font-bold";
+      } else {
+        feedbackEl.textContent = `❌ Wrong! Correct answer is ${q.correct}`;
+        feedbackEl.className = "mt-6 text-red-600 font-bold";
+      }
+      nextBtn.classList.remove("hidden");
+    }
+
+    nextBtn.onclick = () => {
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        questionEl.textContent = "🎉 You finished the game!";
+        optionsEl.innerHTML = "";
+        feedbackEl.textContent = "";
+        nextBtn.classList.add("hidden");
+      }
+    };
+
+    loadQuestion();
+  </script>
+</body>
+</html>

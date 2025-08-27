@@ -1,0 +1,124 @@
+/* Converting React CSS variables to standard CSS with Tailwind config */
+:root {
+
+  --primary: oklch(85.091% 0.0505 74.917); /* Warm amber */
+
+}
+
+.dark {
+  --background: oklch(0.12 0.01 240);
+  --foreground: oklch(0.95 0.01 85);
+  --card: oklch(0.15 0.01 240);
+  --card-foreground: oklch(0.95 0.01 85);
+  --popover: oklch(0.15 0.01 240);
+  --popover-foreground: oklch(0.95 0.01 85);
+  --primary: oklch(0.7 0.15 65);
+  --primary-foreground: oklch(0.12 0.01 240);
+  --secondary: oklch(0.25 0.01 240);
+  --secondary-foreground: oklch(0.95 0.01 85);
+  --muted: oklch(0.2 0.01 240);
+  --muted-foreground: oklch(0.65 0.01 85);
+  --accent: oklch(0.75 0.12 160);
+  --accent-foreground: oklch(0.12 0.01 240);
+  --destructive: oklch(0.45 0.15 25);
+  --destructive-foreground: oklch(0.6 0.2 25);
+  --border: oklch(0.2 0.01 240);
+  --input: oklch(0.2 0.01 240);
+  --ring: oklch(0.4 0.01 240);
+}
+
+/* Configuring Tailwind to use our custom CSS variables */
+@layer base {
+  :root {
+    --background: oklch(0.98 0.02 85); /* Light warm beige */
+    --foreground: oklch(0.25 0.01 240); /* Dark gray */
+    --card: oklch(1 0 0); /* Pure white */
+    --card-foreground: oklch(0.25 0.01 240); /* Dark gray */
+    --popover: oklch(1 0 0); /* Pure white */
+    --popover-foreground: oklch(0.25 0.01 240); /* Dark gray */
+    --primary: oklch(0.65 0.15 65); /* Warm amber */
+    --primary-foreground: oklch(1 0 0); /* White */
+    --secondary: oklch(0.7 0.12 160); /* Emerald green */
+    --secondary-foreground: oklch(1 0 0); /* White */
+    --muted: oklch(0.96 0.01 85); /* Very light beige */
+    --muted-foreground: oklch(0.45 0.01 240); /* Medium gray */
+    --accent: oklch(0.7 0.12 160); /* Emerald green */
+    --accent-foreground: oklch(1 0 0); /* White */
+    --destructive: oklch(0.55 0.2 25); /* Red */
+    --destructive-foreground: oklch(1 0 0); /* White */
+    --border: oklch(0.9 0.01 85); /* Light gray border */
+    --input: oklch(1 0 0); /* White input */
+    --ring: oklch(0.7 0.12 160 / 0.5); /* Emerald ring */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: oklch(0.12 0.01 240);
+    --foreground: oklch(87.972% 0.05703 88.164);
+    --card: oklch(0.15 0.01 240);
+    --card-foreground: oklch(0.95 0.01 85);
+    --popover: oklch(0.15 0.01 240);
+    --popover-foreground: oklch(0.95 0.01 85);
+    --primary: oklch(0.7 0.15 65);
+    --primary-foreground: oklch(0.12 0.01 240);
+    --secondary: oklch(0.25 0.01 240);
+    --secondary-foreground: oklch(0.95 0.01 85);
+    --muted: oklch(0.2 0.01 240);
+    --muted-foreground: oklch(0.65 0.01 85);
+    --accent: oklch(0.75 0.12 160);
+    --accent-foreground: oklch(0.12 0.01 240);
+    --destructive: oklch(0.45 0.15 25);
+    --destructive-foreground: oklch(0.6 0.2 25);
+    --border: oklch(0.2 0.01 240);
+    --input: oklch(0.2 0.01 240);
+    --ring: oklch(0.4 0.01 240);
+  }
+}
+
+@layer components {
+
+  .baybayin-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d97706' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") !important;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, var(--background) 0%, oklch(68.529% 0.06497 51.844) 100%) !important;
+  }
+  .section-1{
+    background-color: var(--muted);
+  }
+  /* .bg-primary{
+    background-color: var(--primary);
+  } */
+
+}
+
+@layer utilities {
+  /* Adding smooth transitions for interactive elements */
+  * {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow
+      0.2s ease;
+  }
+
+ 
+  .backdrop-blur {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+  .text-primary{
+    font: var(--primary) !important;
+  }
+
+  .bg-card{
+    background: var(--card);
+  }
+
+  .bg-primary{
+    background: var(--primary);
+  }
+
+  html {
+  scroll-behavior: smooth;
+}
