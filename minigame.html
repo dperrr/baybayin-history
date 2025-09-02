@@ -30,8 +30,14 @@
 
   <!-- Game Section -->
   <main class="flex-1 flex flex-col items-center justify-center p-6">
-    <h2 class="text-3xl font-bold text-amber-900 mb-4">Baybayin Matching Game</h2>
-    <p class="text-gray-700 mb-8">Match the Latin letter with the correct Baybayin character!</p>
+    <h2 class="text-3xl font-bold text-amber-900 mb-2">Baybayin Matching Game</h2>
+    <p class="text-gray-700 mb-4">Match the Latin letter with the correct Baybayin character!</p>
+
+    <!-- Score -->
+    <div id="score" class="text-xl font-semibold text-amber-800 mb-2">Score: 0</div>
+
+    <!-- Previous Score -->
+    <div id="previousScore" class="text-md text-gray-700 mb-6"></div>
 
     <!-- Question -->
     <div id="question" class="text-2xl font-semibold mb-6"></div>
@@ -46,12 +52,29 @@
     <button id="nextBtn" class="hidden mt-6 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700">
       Next
     </button>
+
+    <!-- Next Level Button -->
+    <button id="nextLevelBtn" class="hidden mt-6 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+      Next Level
+    </button>
+
+    <!-- Play Again Button -->
+    <button id="playAgainBtn" class="hidden mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+      Play Again
+    </button>
+
+    <!-- Load Scores Button -->
+    <button id="loadScoresBtn" class="mt-6 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+      Load Scores
+    </button>
+
+    <!-- Score History -->
+    <div id="scoreHistory" class="mt-6 text-gray-800 text-center"></div>
   </main>
 
   <!-- Footer -->
   <footer class="bg-white border-t mt-12 py-10">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
-      
       <!-- Logo + Description -->
       <div>
         <div class="flex items-center justify-center md:justify-start space-x-2 mb-2">
@@ -60,39 +83,7 @@
         </div>
         <p class="text-sm text-gray-600">Preserving and celebrating the ancient Filipino script for future generations.</p>
       </div>
-
-      <!-- Quick Links -->
-      <div>
-        <h3 class="font-semibold mb-2">Quick Links</h3>
-        <ul class="space-y-1 text-sm">
-          <li><a href="about.html" class="hover:text-orange-600">About Baybayin</a></li>
-          <li><a href="resources.html" class="hover:text-orange-600">Learning Resources</a></li>
-          <li><a href="history.html" class="hover:text-orange-600">Cultural History</a></li>
-          <li><a href="community.html" class="hover:text-orange-600">Community</a></li>
-        </ul>
-      </div>
-
-      <!-- Resources -->
-      <div>
-        <h3 class="font-semibold mb-2">Resources</h3>
-        <ul class="space-y-1 text-sm">
-          <li><a href="#" class="hover:text-orange-600">Character Guide</a></li>
-          <li><a href="#" class="hover:text-orange-600">Practice Exercises</a></li>
-          <li><a href="#" class="hover:text-orange-600">Historical Documents</a></li>
-          <li><a href="minigame.html" class="hover:text-orange-600">Educational Games</a></li>
-        </ul>
-      </div>
-
-      <!-- Connect -->
-      <div>
-        <h3 class="font-semibold mb-2">Connect With Us</h3>
-        <div class="flex justify-center md:justify-start space-x-4 text-xl">
-          <a href="#"><span>🐦</span></a>
-          <a href="#"><span>📘</span></a>
-        </div>
-      </div>
     </div>
-
     <div class="text-center text-xs text-gray-500 mt-8">
       © 2025 Habi ng Baybayin. All Rights Reserved.
     </div>
@@ -100,25 +91,85 @@
 
   <!-- Game Script -->
   <script>
-    const quizData = [
-      { letter: "A", correct: "ᜀ", options: ["ᜀ", "ᜊ", "ᜃ"] },
-      { letter: "BA", correct: "ᜊ", options: ["ᜀ", "ᜊ", "ᜐ"] },
-      { letter: "KA", correct: "ᜃ", options: ["ᜃ", "ᜎ", "ᜇ"] },
-      { letter: "LA", correct: "ᜎ", options: ["ᜃ", "ᜎ", "ᜁ"] },
+    const levels = [
+      [
+        { letter: "A", correct: "ᜀ", options: ["ᜀ", "ᜊ", "ᜃ"] },
+        { letter: "BA", correct: "ᜊ", options: ["ᜀ", "ᜊ", "ᜐ"] },
+        { letter: "KA", correct: "ᜃ", options: ["ᜃ", "ᜎ", "ᜇ"] },
+        { letter: "LA", correct: "ᜎ", options: ["ᜃ", "ᜎ", "ᜁ"] }
+      ],
+      [
+        { letter: "MA", correct: "ᜋ", options: ["ᜋ", "ᜉ", "ᜑ"] },
+        { letter: "PA", correct: "ᜉ", options: ["ᜆ", "ᜉ", "ᜋ"] },
+        { letter: "TA", correct: "ᜆ", options: ["ᜇ", "ᜆ", "ᜋ"] },
+        { letter: "NA", correct: "ᜈ", options: ["ᜌ", "ᜐ", "ᜈ"] }
+      ],
+      [
+        { letter: "SA", correct: "ᜐ", options: ["ᜑ", "ᜐ", "ᜎ"] },
+        { letter: "YA", correct: "ᜌ", options: ["ᜎ", "ᜌ", "ᜑ"] },
+        { letter: "HA", correct: "ᜑ", options: ["ᜐ", "ᜊ", "ᜑ"] },
+        { letter: "GA", correct: "ᜄ", options: ["ᜅ", "ᜄ", "ᜎ"] }
+      ],
+      [
+        { letter: "DA", correct: "ᜇ", options: ["ᜎ", "ᜇ", "ᜐ"] },
+        { letter: "E/I", correct: "ᜁ", options: ["ᜀ", "ᜂ", "ᜁ"] },
+        { letter: "O/U", correct: "ᜂ", options: ["ᜁ", "ᜂ", "ᜊ"] },
+        { letter: "NGA", correct: "ᜅ", options: ["ᜄ", "ᜅ", "ᜑ"] }
+      ]
     ];
 
+    let currentLevel = 0;
     let currentQuestion = 0;
+    let score = 0;
 
+    const scoreEl = document.getElementById("score");
+    const previousScoreEl = document.getElementById("previousScore");
     const questionEl = document.getElementById("question");
     const optionsEl = document.getElementById("options");
     const feedbackEl = document.getElementById("feedback");
     const nextBtn = document.getElementById("nextBtn");
+    const nextLevelBtn = document.getElementById("nextLevelBtn");
+    const playAgainBtn = document.getElementById("playAgainBtn");
+    const loadScoresBtn = document.getElementById("loadScoresBtn");
+    const scoreHistoryEl = document.getElementById("scoreHistory");
+
+    function updateScore() {
+      scoreEl.textContent = `Score: ${score}`;
+    }
+
+    function saveScore() {
+      let scores = JSON.parse(localStorage.getItem("baybayinScores")) || [];
+      scores.push(score);
+      localStorage.setItem("baybayinScores", JSON.stringify(scores));
+      localStorage.setItem("baybayinScore", score); // keep last score
+    }
+
+    function loadPreviousScore() {
+      const saved = localStorage.getItem("baybayinScore");
+      if (saved !== null) {
+        previousScoreEl.textContent = `Previous Score: ${saved}`;
+      } else {
+        previousScoreEl.textContent = `No previous score yet.`;
+      }
+    }
+
+    function loadAllScores() {
+      const scores = JSON.parse(localStorage.getItem("baybayinScores")) || [];
+      if (scores.length > 0) {
+        scoreHistoryEl.innerHTML = "<h3 class='font-bold mb-2'>All Scores:</h3>" +
+          "<ul class='list-disc list-inside space-y-1'>" +
+          scores.map((s, i) => `<li>Game ${i + 1}: ${s}</li>`).join("") +
+          "</ul>";
+      } else {
+        scoreHistoryEl.textContent = "No scores recorded yet.";
+      }
+    }
 
     function loadQuestion() {
       feedbackEl.textContent = "";
       nextBtn.classList.add("hidden");
 
-      const q = quizData[currentQuestion];
+      const q = levels[currentLevel][currentQuestion];
       questionEl.textContent = `Which is "${q.letter}" in Baybayin?`;
 
       optionsEl.innerHTML = "";
@@ -132,10 +183,12 @@
     }
 
     function checkAnswer(selected) {
-      const q = quizData[currentQuestion];
+      const q = levels[currentLevel][currentQuestion];
       if (selected === q.correct) {
         feedbackEl.textContent = "✅ Correct!";
         feedbackEl.className = "mt-6 text-green-600 font-bold";
+        score++;
+        updateScore();
       } else {
         feedbackEl.textContent = `❌ Wrong! Correct answer is ${q.correct}`;
         feedbackEl.className = "mt-6 text-red-600 font-bold";
@@ -145,16 +198,48 @@
 
     nextBtn.onclick = () => {
       currentQuestion++;
-      if (currentQuestion < quizData.length) {
+      if (currentQuestion < levels[currentLevel].length) {
         loadQuestion();
       } else {
-        questionEl.textContent = "🎉 You finished the game!";
-        optionsEl.innerHTML = "";
-        feedbackEl.textContent = "";
-        nextBtn.classList.add("hidden");
+        if (currentLevel < levels.length - 1) {
+          questionEl.textContent = `🎉 Level ${currentLevel + 1} Complete!`;
+          optionsEl.innerHTML = "";
+          feedbackEl.textContent = "";
+          nextBtn.classList.add("hidden");
+          nextLevelBtn.classList.remove("hidden");
+        } else {
+          questionEl.textContent = `🏆 Game Over! Final Score: ${score}`;
+          optionsEl.innerHTML = "";
+          feedbackEl.textContent = "";
+          saveScore();
+          nextBtn.classList.add("hidden");
+          nextLevelBtn.classList.add("hidden");
+          playAgainBtn.classList.remove("hidden");
+          loadPreviousScore();
+        }
       }
     };
 
+    nextLevelBtn.onclick = () => {
+      currentLevel++;
+      currentQuestion = 0;
+      nextLevelBtn.classList.add("hidden");
+      loadQuestion();
+    };
+
+    playAgainBtn.onclick = () => {
+      score = 0;
+      currentLevel = 0;
+      currentQuestion = 0;
+      updateScore();
+      playAgainBtn.classList.add("hidden");
+      loadQuestion();
+    };
+
+    loadScoresBtn.onclick = loadAllScores;
+
+    // Load saved score when page starts
+    loadPreviousScore();
     loadQuestion();
   </script>
 </body>

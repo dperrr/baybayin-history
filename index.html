@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Habi ng Baybayin - Ancient Filipino Script</title>
-    <meta name="description" content="A web platform dedicated to preserving and celebrating the ancient Filipino script">
+    <meta
+      name="description"
+      content="A web platform dedicated to preserving and celebrating the ancient Filipino script"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="min-h-screen  font-sans">
-    <nav class="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border shadow-lg">
+  <body class="min-h-screen font-sans">
+    <nav
+      class="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border shadow-lg"
+    >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <div include-html="/components/navbar.html"></div>
@@ -52,22 +60,26 @@
             <!-- Hero Content -->
             <div class="space-y-8">
               <div class="space-y-4">
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight"> Habi ng <span class="text-orange-500">Baybayin</span>
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+                  Habi ng <span class="text-orange-500">Baybayin</span>
                 </h1>
-                <p class="text-xl text-muted-foreground leading-relaxed"> An Interactive Web Platform for cultural reconnection by CARL Villegas. </p>
+                <p class="text-xl text-muted-foreground leading-relaxed">
+                  An Interactive Web Platform for cultural reconnection by CARL Villegas.
+                </p>
               </div>
               <div class="flex flex-col sm:flex-row gap-4">
-                <button class="px-6 py-3 bg-orange-500 hover:bg-primary/90 text-white rounded-lg font-medium flex items-center justify-center transition-colors"> Start Learning <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <a href="#discover" class="px-6 py-3 bg-orange-500 hover:bg-primary/90 text-white rounded-lg font-medium flex items-center justify-center transition-colors">
+                  Start Learning
+                  <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                   </svg>
-                </button>
-                <button class="px-6 py-3 border border-primary text-orange-500 hover:bg-primary/10 bg-transparent rounded-lg font-medium transition-colors"> Explore History </button>
+                </a>
+                <a href="#history" class="px-6 py-3 border border-primary text-orange-500 hover:bg-primary/10 bg-transparent rounded-lg font-medium transition-colors">
+                  Explore History
+                </a>
               </div>
               <!-- Stats -->
-              <div id="stats-container" class="grid grid-cols-3 gap-6 pt-8">
-                
-              </div>
-
+              <div id="stats-container" class="grid grid-cols-3 gap-6 pt-8"></div>
             </div>
             <!-- Hero Image/Visual -->
             <div class="relative bg-white">
@@ -76,25 +88,36 @@
                   <img src="/assets/images/anc-fil.png" alt="Baybayin Script Characters" class="w-full h-full object-cover rounded-lg" />
                 </div>
                 <div class="mt-6 text-center">
-                  <h3 class="text-lg font-semibold text-card-foreground">Ancient Script, Modern Learning</h3>
-                  <p class="text-sm text-muted-foreground mt-2"> Experience the elegance of pre-colonial Filipino writing </p>
+                  <h3 class="text-lg font-semibold text-card-foreground">
+                    Ancient Script, Modern Learning
+                  </h3>
+                  <p class="text-sm text-muted-foreground mt-2">
+                    Experience the elegance of pre-colonial Filipino writing
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
       <!-- Features Section -->
-      <section class="py-20 bg-muted/30 section-1">
+      <section id="discover" class="py-20 bg-muted/30 section-1">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4"> Discover the Beauty of Baybayin </h2>
-            <p class="text-lg text-muted-foreground max-w-2xl mx-auto"> Our platform offers comprehensive resources to learn, practice, and celebrate the ancient Filipino script that connects us to our rich cultural heritage. </p>
+            <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Discover the Beauty of Baybayin
+            </h2>
+            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our platform offers comprehensive resources to learn, practice,
+              and celebrate the ancient Filipino script that connects us to our
+              rich cultural heritage.
+            </p>
           </div>
-          <!-- Where cards will be injected -->
           <div id="features-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
       </section>
+
       <!-- About Section -->
       <section id="history" class="py-20 bg-background">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,25 +125,38 @@
             <!-- Content -->
             <div class="space-y-8">
               <div class="space-y-4">
-                <h2 class="text-3xl md:text-4xl font-bold"> Preserving Our <span class="text-orange-500">Cultural Heritage</span>
+                <h2 class="text-3xl md:text-4xl font-bold">
+                  Preserving Our <span class="text-orange-500">Cultural Heritage</span>
                 </h2>
-                <p class="text-lg text-muted-foreground leading-relaxed"> Baybayin, also known as Alibata, is the ancient script used by early Filipinos before Spanish colonization. This beautiful writing system represents our rich pre-colonial heritage and continues to be a symbol of Filipino identity. </p>
+                <p class="text-lg text-muted-foreground leading-relaxed">
+                  Baybayin, also known as Alibata, is the ancient script used by
+                  early Filipinos before Spanish colonization. This beautiful
+                  writing system represents our rich pre-colonial heritage and
+                  continues to be a symbol of Filipino identity.
+                </p>
               </div>
-              <!-- Dynamic Benefits -->
               <div id="benefits" class="space-y-6"></div>
-              <button class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-medium flex items-center transition-colors"> Learn More About Baybayin <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button id="word-btn" class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-medium flex items-center transition-colors">
+                View Word of The Day
+                <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
               </button>
             </div>
+
             <!-- Visual -->
             <div class="space-y-6">
               <div class="p-6 bg-card border border-border/50 rounded-lg">
                 <div class="aspect-[4/3] bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center mb-4">
                   <img src="assets/images/Visit-Philippines-Script.jpg" alt="Historical Baybayin Manuscript" class="w-full h-full object-cover rounded-lg" />
                 </div>
-                <h3 class="font-semibold text-card-foreground mb-2">Historical Manuscripts</h3>
-                <p class="text-sm text-muted-foreground"> Ancient documents showcase the elegance and practicality of Baybayin script </p>
+                <h3 class="font-semibold text-card-foreground mb-2">
+                  Historical Manuscripts
+                </h3>
+                <p class="text-sm text-muted-foreground">
+                  Ancient documents showcase the elegance and practicality of
+                  Baybayin script
+                </p>
               </div>
               <div class="grid grid-cols-2 gap-4">
                 <div class="p-4 bg-card border border-border/50 rounded-lg">
@@ -139,11 +175,124 @@
             </div>
           </div>
         </div>
+
+        <!-- Full History Section -->
+        <section id="full-history" class="py-20 bg-muted/20">
+          <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+              <h2 class="text-4xl font-bold text-foreground">
+                The <span class="text-orange-500">History of Baybayin</span>
+              </h2>
+              <p class="text-lg text-muted-foreground mt-4 max-w-3xl mx-auto">
+                Journey back in time and discover how Baybayin shaped the way
+                early Filipinos communicated, preserved culture, and connected
+                with each other.
+              </p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="space-y-12">
+              <div class="p-6 bg-card border border-border/50 rounded-xl shadow-md">
+                <h3 class="text-2xl font-semibold mb-2">Pre-Colonial Era</h3>
+                <p class="text-muted-foreground">
+                  Baybayin was widely used across the Philippine islands before
+                  Spanish colonization. It served as a tool for communication,
+                  poetry, and recording important events.
+                </p>
+              </div>
+              <div class="p-6 bg-card border border-border/50 rounded-xl shadow-md">
+                <h3 class="text-2xl font-semibold mb-2">Spanish Colonization</h3>
+                <p class="text-muted-foreground">
+                  During the Spanish era, Baybayin was gradually replaced by the
+                  Latin alphabet. Missionaries adapted it for religious texts,
+                  but over time it faded from daily use.
+                </p>
+              </div>
+              <div class="p-6 bg-card border border-border/50 rounded-xl shadow-md">
+                <h3 class="text-2xl font-semibold mb-2">Modern Revival</h3>
+                <p class="text-muted-foreground">
+                  Today, Baybayin is being revived as a cultural symbol. Artists,
+                  educators, and advocates promote its study and use,
+                  highlighting its role in Filipino identity.
+                </p>
+              </div>
+            </div>
+
+            <!-- Baybayin Alphabet -->
+            <div class="mt-16 text-center">
+              <h3 class="text-2xl font-semibold mb-4">Baybayin Alphabet</h3>
+              <p class="text-muted-foreground mb-6">
+                Narito ang Baybayin kasama ang katumbas nitong mga titik sa
+                Tagalog.
+              </p>
+              <div class="flex justify-center">
+                <img src="assets/images/Alphabett.png" alt="Baybayin Alphabet Chart" class="rounded-lg shadow-lg max-w-full h-auto" />
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
     </main>
+
+    <!-- Word of the Day Modal -->
+    <div id="word-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+      <div class="bg-white rounded-xl shadow-lg max-w-md w-full p-6 relative">
+        <!-- Close Button -->
+        <button id="close-modal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800">
+          ✕
+        </button>
+        <h3 class="text-2xl font-semibold mb-4">Word of the Day</h3>
+        <p id="word-script" class="text-lg font-bold text-orange-500"></p>
+        <p id="word-meaning" class="text-muted-foreground mt-2"></p>
+      </div>
+    </div>
+
     <div include-html="/components/footer.html"></div>
     <script src="/js/app.js"></script>
     <script src="/js/components/cards.js"></script>
     <script src="/js/components/aboutus.js"></script>
+
+    <!-- Modal Script with Randomizer -->
+    <script>
+      const words = [
+        { script: "ᜀᜋ", meaning: "Ama (Father)" },
+        { script: "ᜉᜓᜃ", meaning: "Pook (Place)" },
+        { script: "ᜋᜎᜓ", meaning: "Malu (Joy)" },
+        { script: "ᜀᜆ", meaning: "Ata (Person)" },
+        { script: "ᜐᜓᜈ", meaning: "Suna (News)" },
+        { script: "ᜎᜎ᜔ᜀᜅ", meaning: "Lalang (Creation)" },
+        { script: "ᜉᜓᜎ᜔", meaning: "Pulo (Island)" },
+        { script: "ᜋᜃ᜔ᜋᜒ", meaning: "Makmi (Rich)" },
+        { script: "ᜐᜎᜅ", meaning: "Salang (Light)" },
+        { script: "ᜀᜎᜓᜎ᜔", meaning: "Alul (Flow)" }
+      ];
+
+      const wordBtn = document.getElementById("word-btn");
+      const modal = document.getElementById("word-modal");
+      const closeModal = document.getElementById("close-modal");
+      const wordScript = document.getElementById("word-script");
+      const wordMeaning = document.getElementById("word-meaning");
+
+      wordBtn.addEventListener("click", () => {
+        const randomWord = words[Math.floor(Math.random() * words.length)];
+        wordScript.textContent = randomWord.script;
+        wordMeaning.textContent = "Meaning: " + randomWord.meaning;
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      });
+
+      closeModal.addEventListener("click", () => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        }
+      });
+    </script>
   </body>
 </html>
