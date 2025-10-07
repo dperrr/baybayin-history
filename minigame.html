@@ -1,246 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Baybayin Mini Game</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-image: radial-gradient(circle at 25px 25px, #fde68a 1%, transparent 0),
+                        radial-gradient(circle at 75px 75px, #fef3c7 1%, transparent 0);
+      background-size: 100px 100px;
+    }
+    .hover-glow:hover { box-shadow: 0 0 12px rgba(251, 191, 36, 0.4); transform: translateY(-2px); transition: all 0.2s ease; }
+    .btn { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  </style>
 </head>
-<body class="bg-orange-50 font-sans min-h-screen flex flex-col">
+
+<body class="font-sans min-h-screen flex flex-col">
 
   <!-- Navbar -->
-  <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <!-- Logo + Title -->
-        <div class="flex items-center space-x-2">
-          <div class="bg-amber-600 text-white p-2 rounded-lg">𑄝</div>
-          <h1 class="text-lg font-bold">Habi ng Baybayin</h1>
-        </div>
-        <!-- Nav Links -->
-        <div class="hidden md:flex space-x-6">
-          <a href="index.html#history" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Explore History</a>
-          <a href="bill.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">View Policies</a>
-          <a href="merchandise.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Browse Merchandise</a>
-          <a href="minigame.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Mini Game</a>
-        </div>
+<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-amber-100 shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo / Title -->
+      <div class="flex items-center space-x-2">
+        <h1 class="text-xl font-extrabold tracking-wide">Habi ng Baybayin</h1>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-6 font-medium">
+        <a href="index.html#history" class="px-3 py-2 text-md hover:text-orange-500 hover:bg-amber-50 rounded-md transition-colors">Explore History</a>
+        <a href="bill.html" class="px-3 py-2 text-md hover:text-orange-500 hover:bg-amber-50 rounded-md transition-colors">View Policies</a>
+        <a href="merchandise.html" class="px-3 py-2 text-md hover:text-orange-500 hover:bg-amber-50 rounded-md transition-colors">Merchandise</a>
+        <a href="minigame.html" class="px-3 py-2 text-md text-orange-500 font-semibold underline underline-offset-4 rounded-md transition-colors">Mini Game</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-btn" class="p-2 text-gray-800 hover:bg-amber-50 rounded-md">
+          <svg id="menu-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="close-icon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
       </div>
     </div>
-  </nav>
 
-  <!-- Game Section -->
-  <main class="flex-1 flex flex-col items-center justify-center p-6">
-    <h2 class="text-3xl font-bold text-amber-900 mb-2">Baybayin Matching Game</h2>
-    <p class="text-gray-700 mb-4">Match the Latin letter with the correct Baybayin character!</p>
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="md:hidden py-4 border-t border-amber-100 hidden">
+      <div class="flex flex-col space-y-2">
+        <a href="index.html#history" class="px-3 py-2 text-md hover:text-orange-500 hover:bg-amber-50 rounded-md transition-colors">Explore History</a>
+        <a href="bill.html" class="px-3 py-2 text-md hover:text-orange-500 hover:bg-amber-50 rounded-md transition-colors">View Policies</a>
+        <a href="merchandise.html" class="px-3 py-2 text-md hover:text-orange-500 hover:bg-amber-50 rounded-md transition-colors">Merchandise</a>
+        <a href="minigame.html" class="px-3 py-2 text-md text-orange-500 font-semibold underline underline-offset-4 rounded-md transition-colors">Mini Game</a>
+      </div>
+    </div>
+  </div>
 
-    <!-- Score -->
-    <div id="score" class="text-xl font-semibold text-amber-800 mb-2">Score: 0</div>
+  <script>
+    const mobileBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
 
-    <!-- Previous Score -->
-    <div id="previousScore" class="text-md text-gray-700 mb-6"></div>
+    mobileBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      menuIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
+    });
+  </script>
+</nav>
 
-    <!-- Question -->
-    <div id="question" class="text-2xl font-semibold mb-6"></div>
+  <!-- Main Section -->
+  <main class="flex-1 flex flex-col lg:flex-row max-w-7xl mx-auto w-full p-8 gap-10">
 
-    <!-- Options -->
-    <div id="options" class="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full max-w-md"></div>
+    <!-- LEFT: Leaderboard -->
+    <aside class="w-full lg:w-1/3 bg-white bg-opacity-90 shadow-xl rounded-2xl p-6 border border-amber-200 hover-glow transition-all">
+      <h2 class="text-2xl font-bold text-amber-800 mb-4">🏅 Leaderboard</h2>
+      <table class="min-w-full border text-center text-gray-800 text-sm rounded-lg overflow-hidden">
+        <thead class="bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-900">
+          <tr>
+            <th class="py-2 border font-semibold">#</th>
+            <th class="py-2 border font-semibold">Name</th>
+            <th class="py-2 border font-semibold">Score</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard" class="divide-y divide-amber-100"></tbody>
+      </table>
 
-    <!-- Feedback -->
-    <div id="feedback" class="mt-6 text-lg font-bold"></div>
+      <div class="mt-8 bg-amber-50 rounded-lg p-4 shadow-inner border border-amber-100">
+        <h3 class="text-lg font-semibold mb-1 text-amber-800">🎮 Last Session</h3>
+        <p id="previousScore" class="text-gray-700">No previous score yet.</p>
+      </div>
+    </aside>
 
-    <!-- Next Button -->
-    <button id="nextBtn" class="hidden mt-6 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700">
-      Next
-    </button>
+    <!-- RIGHT: Game Area -->
+    <section class="flex-1 bg-white shadow-lg rounded-2xl p-10 border border-amber-200 flex flex-col items-center text-center hover-glow transition-all">
+      <h2 class="text-3xl font-extrabold text-amber-900 mb-2">Baybayin Matching Game</h2>
+      <p class="text-gray-700 mb-8 max-w-md">
+        Match each <span class="font-semibold text-amber-700">syllable</span> 
+        to its correct <span class="font-semibold text-amber-700">Baybayin character</span> 
+        and test your knowledge!
+      </p>
 
-    <!-- Next Level Button -->
-    <button id="nextLevelBtn" class="hidden mt-6 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
-      Next Level
-    </button>
+      <!-- Start Buttons -->
+      <div id="startButtons" class="flex flex-wrap justify-center gap-4">
+        <button id="reviewBtn" class="btn px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 font-semibold">
+          Review First
+        </button>
+        <button id="startBtn" class="btn px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 font-semibold">
+          Play Game
+        </button>
+      </div>
 
-    <!-- Play Again Button -->
-    <button id="playAgainBtn" class="hidden mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-      Play Again
-    </button>
-
-    <!-- Load Scores Button -->
-    <button id="loadScoresBtn" class="mt-6 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
-      Load Scores
-    </button>
-
-    <!-- Score History -->
-    <div id="scoreHistory" class="mt-6 text-gray-800 text-center"></div>
+      <!-- Game Area -->
+      <div id="gameArea" class="hidden flex flex-col items-center">
+        <div id="score" class="text-xl font-semibold text-amber-800 mb-4 mt-8">Score: 0</div>
+        <div id="question" class="text-2xl font-bold text-gray-800 mb-6"></div>
+        <div id="options" class="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full max-w-md"></div>
+        <div id="feedback" class="mt-6 text-lg font-bold"></div>
+        <div class="flex flex-wrap justify-center gap-3 mt-8">
+          <button id="nextBtn" class="hidden btn px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700">Next</button>
+          <button id="nextLevelBtn" class="hidden btn px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Next Level</button>
+          <button id="playAgainBtn" class="hidden btn px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Play Again</button>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <!-- Review Modal -->
+  <div id="reviewModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+      <button id="closeReview" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-lg">✕</button>
+      <h3 class="text-2xl font-bold mb-4 text-amber-800">Baybayin Alphabet Chart</h3>
+      <img src="assets/images/Alphabett.png" alt="Baybayin Chart" class="rounded-lg shadow-md border border-amber-100">
+      <p class="text-sm text-gray-600 mt-4">Study the Baybayin characters before starting the game!</p>
+    </div>
+  </div>
+
   <!-- Footer -->
-  <footer class="bg-white border-t mt-12 py-10">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
-      <!-- Logo + Description -->
-      <div>
-        <div class="flex items-center justify-center md:justify-start space-x-2 mb-2">
-          <div class="bg-amber-600 text-white p-2 rounded-lg">𑄝</div>
-          <h2 class="font-bold text-lg">Habi ng Baybayin</h2>
-        </div>
-        <p class="text-sm text-gray-600">Preserving and celebrating the ancient Filipino script for future generations.</p>
-      </div>
-    </div>
-    <div class="text-center text-xs text-gray-500 mt-8">
-      © 2025 Habi ng Baybayin. All Rights Reserved.
-    </div>
+  <footer class="bg-white text-gray-700 mt-12 py-6 text-center text-sm border-t border-amber-100 shadow-sm">
+    © 2025 <span class="font-bold text-amber-800">Habi ng Baybayin</span> • Preserving our ancient script through learning.
   </footer>
 
-  <!-- Game Script -->
   <script>
-    const levels = [
-      [
-        { letter: "A", correct: "ᜀ", options: ["ᜀ", "ᜊ", "ᜃ"] },
-        { letter: "BA", correct: "ᜊ", options: ["ᜀ", "ᜊ", "ᜐ"] },
-        { letter: "KA", correct: "ᜃ", options: ["ᜃ", "ᜎ", "ᜇ"] },
-        { letter: "LA", correct: "ᜎ", options: ["ᜃ", "ᜎ", "ᜁ"] }
-      ],
-      [
-        { letter: "MA", correct: "ᜋ", options: ["ᜋ", "ᜉ", "ᜑ"] },
-        { letter: "PA", correct: "ᜉ", options: ["ᜆ", "ᜉ", "ᜋ"] },
-        { letter: "TA", correct: "ᜆ", options: ["ᜇ", "ᜆ", "ᜋ"] },
-        { letter: "NA", correct: "ᜈ", options: ["ᜌ", "ᜐ", "ᜈ"] }
-      ],
-      [
-        { letter: "SA", correct: "ᜐ", options: ["ᜑ", "ᜐ", "ᜎ"] },
-        { letter: "YA", correct: "ᜌ", options: ["ᜎ", "ᜌ", "ᜑ"] },
-        { letter: "HA", correct: "ᜑ", options: ["ᜐ", "ᜊ", "ᜑ"] },
-        { letter: "GA", correct: "ᜄ", options: ["ᜅ", "ᜄ", "ᜎ"] }
-      ],
-      [
-        { letter: "DA", correct: "ᜇ", options: ["ᜎ", "ᜇ", "ᜐ"] },
-        { letter: "E/I", correct: "ᜁ", options: ["ᜀ", "ᜂ", "ᜁ"] },
-        { letter: "O/U", correct: "ᜂ", options: ["ᜁ", "ᜂ", "ᜊ"] },
-        { letter: "NGA", correct: "ᜅ", options: ["ᜄ", "ᜅ", "ᜑ"] }
-      ]
-    ];
+    document.addEventListener("DOMContentLoaded", () => {
+      const startBtn = document.getElementById("startBtn");
+      const reviewBtn = document.getElementById("reviewBtn");
+      const reviewModal = document.getElementById("reviewModal");
+      const closeReview = document.getElementById("closeReview");
+      const gameArea = document.getElementById("gameArea");
+      const startButtons = document.getElementById("startButtons");
+      const leaderboardEl = document.getElementById("leaderboard");
+      const previousScoreEl = document.getElementById("previousScore");
 
-    let currentLevel = 0;
-    let currentQuestion = 0;
-    let score = 0;
+      // Review Modal
+      reviewBtn.addEventListener("click", () => { reviewModal.classList.remove("hidden"); reviewModal.classList.add("flex"); });
+      closeReview.addEventListener("click", () => { reviewModal.classList.add("hidden"); reviewModal.classList.remove("flex"); });
 
-    const scoreEl = document.getElementById("score");
-    const previousScoreEl = document.getElementById("previousScore");
-    const questionEl = document.getElementById("question");
-    const optionsEl = document.getElementById("options");
-    const feedbackEl = document.getElementById("feedback");
-    const nextBtn = document.getElementById("nextBtn");
-    const nextLevelBtn = document.getElementById("nextLevelBtn");
-    const playAgainBtn = document.getElementById("playAgainBtn");
-    const loadScoresBtn = document.getElementById("loadScoresBtn");
-    const scoreHistoryEl = document.getElementById("scoreHistory");
-
-    function updateScore() {
-      scoreEl.textContent = `Score: ${score}`;
-    }
-
-    function saveScore() {
-      let scores = JSON.parse(localStorage.getItem("baybayinScores")) || [];
-      scores.push(score);
-      localStorage.setItem("baybayinScores", JSON.stringify(scores));
-      localStorage.setItem("baybayinScore", score); // keep last score
-    }
-
-    function loadPreviousScore() {
-      const saved = localStorage.getItem("baybayinScore");
-      if (saved !== null) {
-        previousScoreEl.textContent = `Previous Score: ${saved}`;
-      } else {
-        previousScoreEl.textContent = `No previous score yet.`;
-      }
-    }
-
-    function loadAllScores() {
-      const scores = JSON.parse(localStorage.getItem("baybayinScores")) || [];
-      if (scores.length > 0) {
-        scoreHistoryEl.innerHTML = "<h3 class='font-bold mb-2'>All Scores:</h3>" +
-          "<ul class='list-disc list-inside space-y-1'>" +
-          scores.map((s, i) => `<li>Game ${i + 1}: ${s}</li>`).join("") +
-          "</ul>";
-      } else {
-        scoreHistoryEl.textContent = "No scores recorded yet.";
-      }
-    }
-
-    function loadQuestion() {
-      feedbackEl.textContent = "";
-      nextBtn.classList.add("hidden");
-
-      const q = levels[currentLevel][currentQuestion];
-      questionEl.textContent = `Which is "${q.letter}" in Baybayin?`;
-
-      optionsEl.innerHTML = "";
-      q.options.forEach(option => {
-        const btn = document.createElement("button");
-        btn.textContent = option;
-        btn.className = "px-4 py-2 bg-white border rounded-lg hover:bg-amber-100 text-2xl";
-        btn.onclick = () => checkAnswer(option);
-        optionsEl.appendChild(btn);
-      });
-    }
-
-    function checkAnswer(selected) {
-      const q = levels[currentLevel][currentQuestion];
-      if (selected === q.correct) {
-        feedbackEl.textContent = "✅ Correct!";
-        feedbackEl.className = "mt-6 text-green-600 font-bold";
-        score++;
-        updateScore();
-      } else {
-        feedbackEl.textContent = `❌ Wrong! Correct answer is ${q.correct}`;
-        feedbackEl.className = "mt-6 text-red-600 font-bold";
-      }
-      nextBtn.classList.remove("hidden");
-    }
-
-    nextBtn.onclick = () => {
-      currentQuestion++;
-      if (currentQuestion < levels[currentLevel].length) {
+      // Game Start
+      startBtn.addEventListener("click", () => {
+        startButtons.classList.add("hidden");
+        gameArea.classList.remove("hidden");
         loadQuestion();
-      } else {
-        if (currentLevel < levels.length - 1) {
+      });
+
+      // GAME DATA
+      const levels = [
+        [
+          { letter: "A", correct: "ᜀ", options: ["ᜀ", "ᜊ", "ᜃ"] },
+          { letter: "BA", correct: "ᜊ", options: ["ᜀ", "ᜊ", "ᜐ"] },
+          { letter: "KA", correct: "ᜃ", options: ["ᜃ", "ᜎ", "ᜇ"] },
+          { letter: "LA", correct: "ᜎ", options: ["ᜃ", "ᜎ", "ᜁ"] }
+        ],
+        [
+          { letter: "MA", correct: "ᜋ", options: ["ᜋ", "ᜐ", "ᜇ"] },
+          { letter: "NA", correct: "ᜈ", options: ["ᜅ", "ᜈ", "ᜉ"] },
+          { letter: "PA", correct: "ᜉ", options: ["ᜊ", "ᜉ", "ᜋ"] },
+          { letter: "SA", correct: "ᜐ", options: ["ᜃ", "ᜐ", "ᜎ"] }
+        ],
+        [
+          { letter: "TA", correct: "ᜆ", options: ["ᜆ", "ᜐ", "ᜎ"] },
+          { letter: "DA", correct: "ᜇ", options: ["ᜇ", "ᜋ", "ᜉ"] },
+          { letter: "GA", correct: "ᜄ", options: ["ᜇ", "ᜄ", "ᜈ"] },
+          { letter: "YA", correct: "ᜌ", options: ["ᜋ", "ᜌ", "ᜈ"] }
+        ]
+      ];
+
+      let currentLevel = 0;
+      let currentQuestion = 0;
+      let score = 0;
+
+      const scoreEl = document.getElementById("score");
+      const questionEl = document.getElementById("question");
+      const optionsEl = document.getElementById("options");
+      const feedbackEl = document.getElementById("feedback");
+      const nextBtn = document.getElementById("nextBtn");
+      const nextLevelBtn = document.getElementById("nextLevelBtn");
+      const playAgainBtn = document.getElementById("playAgainBtn");
+
+      function updateScore() { scoreEl.textContent = `Score: ${score}`; }
+
+      function loadQuestion() {
+        feedbackEl.textContent = "";
+        nextBtn.classList.add("hidden");
+        nextLevelBtn.classList.add("hidden");
+        const q = levels[currentLevel][currentQuestion];
+        questionEl.textContent = `What is the Baybayin for "${q.letter}"?`;
+        optionsEl.innerHTML = "";
+        q.options.forEach(option => {
+          const btn = document.createElement("button");
+          btn.textContent = option;
+          btn.className = "px-4 py-2 bg-white border-2 border-amber-300 rounded-xl hover:bg-amber-100 text-2xl font-semibold transition";
+          btn.onclick = () => checkAnswer(option);
+          optionsEl.appendChild(btn);
+        });
+      }
+
+      function checkAnswer(selected) {
+        const q = levels[currentLevel][currentQuestion];
+        if (selected === q.correct) {
+          feedbackEl.textContent = "✅ Correct!";
+          feedbackEl.className = "mt-6 text-green-600 font-bold";
+          score++;
+          updateScore();
+        } else {
+          feedbackEl.textContent = `❌ Wrong! Correct answer: ${q.correct}`;
+          feedbackEl.className = "mt-6 text-red-600 font-bold";
+        }
+        nextBtn.classList.remove("hidden");
+      }
+
+      nextBtn.onclick = () => {
+        currentQuestion++;
+        if (currentQuestion < levels[currentLevel].length) {
+          loadQuestion();
+        } else if (currentLevel < levels.length - 1) {
+          nextLevelBtn.classList.remove("hidden");
+          nextBtn.classList.add("hidden");
           questionEl.textContent = `🎉 Level ${currentLevel + 1} Complete!`;
           optionsEl.innerHTML = "";
-          feedbackEl.textContent = "";
-          nextBtn.classList.add("hidden");
-          nextLevelBtn.classList.remove("hidden");
         } else {
-          questionEl.textContent = `🏆 Game Over! Final Score: ${score}`;
-          optionsEl.innerHTML = "";
-          feedbackEl.textContent = "";
-          saveScore();
-          nextBtn.classList.add("hidden");
-          nextLevelBtn.classList.add("hidden");
-          playAgainBtn.classList.remove("hidden");
-          loadPreviousScore();
+          endGame();
         }
+      };
+
+      nextLevelBtn.onclick = () => {
+        currentLevel++;
+        currentQuestion = 0;
+        nextLevelBtn.classList.add("hidden");
+        loadQuestion();
+      };
+
+      playAgainBtn.onclick = () => location.reload();
+
+      // END GAME + LEADERBOARD
+      function endGame() {
+        questionEl.textContent = `🏆 Game Over! Final Score: ${score}`;
+        optionsEl.innerHTML = "";
+        feedbackEl.textContent = "";
+        nextBtn.classList.add("hidden");
+        nextLevelBtn.classList.add("hidden");
+        playAgainBtn.classList.remove("hidden");
+
+        const player = prompt("Enter your initials (e.g., C.V.):", "Player");
+        if (player) saveToLeaderboard(player, score);
+        displayLeaderboard();
+        previousScoreEl.textContent = `Your last score: ${score}`;
       }
-    };
 
-    nextLevelBtn.onclick = () => {
-      currentLevel++;
-      currentQuestion = 0;
-      nextLevelBtn.classList.add("hidden");
-      loadQuestion();
-    };
+      // LEADERBOARD FUNCTIONS
+      function saveToLeaderboard(name, score) {
+        const data = JSON.parse(localStorage.getItem("baybayinLeaderboard") || "[]");
+        data.push({ name, score });
+        data.sort((a,b) => b.score - a.score);
+        localStorage.setItem("baybayinLeaderboard", JSON.stringify(data.slice(0,5)));
+      }
 
-    playAgainBtn.onclick = () => {
-      score = 0;
-      currentLevel = 0;
-      currentQuestion = 0;
+      function displayLeaderboard() {
+        const data = JSON.parse(localStorage.getItem("baybayinLeaderboard") || "[]");
+        leaderboardEl.innerHTML = data.map((item, i) => `
+          <tr>
+            <td class='border py-1'>${i+1}</td>
+            <td class='border py-1 font-semibold'>${item.name}</td>
+            <td class='border py-1'>${item.score}</td>
+          </tr>
+        `).join("");
+      }
+
+      displayLeaderboard();
       updateScore();
-      playAgainBtn.classList.add("hidden");
-      loadQuestion();
-    };
-
-    loadScoresBtn.onclick = loadAllScores;
-
-    // Load saved score when page starts
-    loadPreviousScore();
-    loadQuestion();
+    });
   </script>
 </body>
 </html>
