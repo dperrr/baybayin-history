@@ -55,3 +55,5 @@ const stats = [
 
     statsContainer.appendChild(statItem);
   });
+
+  

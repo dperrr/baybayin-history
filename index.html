@@ -16,19 +16,25 @@
     />
   </head>
   <body class="min-h-screen font-sans">
-    <nav
-      class="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border shadow-lg"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-          <div include-html="/components/navbar.html"></div>
-          <!-- Desktop Navigation -->
-          <div class="hidden md:flex items-center space-x-1">
-            <a href="#history" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Explore History</a>
-            <a href="bill.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">View Policies</a>
-            <a href="merchandise.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Browse Merchandise</a>
-            <a href="minigame.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Mini Game</a>
-          </div>
+    <nav class="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo / Title -->
+      <div class="flex items-center space-x-2">
+        <h1 class="text-xl font-extrabold tracking-wide">Habi ng Baybayin</h1>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-1">
+        <a href="#history" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Explore History</a>
+        <a href="bill.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">View Policies</a>
+        <a href="merchandise.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Browse Merchandise</a>
+        <a href="minigame.html" class="px-3 py-2 text-md font-medium hover:text-orange-500 hover:bg-primary/10 rounded-md transition-colors">Mini Game</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
           <!-- Mobile Menu Button -->
           <div class="md:hidden">
             <button id="mobile-menu-btn" class="p-2 text-foreground hover:bg-primary/10 rounded-md">
@@ -64,7 +70,7 @@
                   Habi ng <span class="text-orange-500">Baybayin</span>
                 </h1>
                 <p class="text-xl text-muted-foreground leading-relaxed">
-                  An Interactive Web Platform for cultural reconnection by CARL Villegas.
+                  An Interactive Web Platform for cultural reconnection by CSA1.
                 </p>
               </div>
               <div class="flex flex-col sm:flex-row gap-4">
@@ -136,6 +142,8 @@
                 </p>
               </div>
               <div id="benefits" class="space-y-6"></div>
+
+              <!-- Word of the Day Button -->
               <button id="word-btn" class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-medium flex items-center transition-colors">
                 View Word of The Day
                 <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -236,7 +244,7 @@
 
     <!-- Word of the Day Modal -->
     <div id="word-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
-      <div class="bg-white rounded-xl shadow-lg max-w-md w-full p-6 relative">
+      <div class="bg-white rounded-xl shadow-lg max-w-md w-full p-6 relative text-center">
         <!-- Close Button -->
         <button id="close-modal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800">
           ✕
@@ -244,6 +252,11 @@
         <h3 class="text-2xl font-semibold mb-4">Word of the Day</h3>
         <p id="word-script" class="text-lg font-bold text-orange-500"></p>
         <p id="word-meaning" class="text-muted-foreground mt-2"></p>
+
+        <!-- Next Word Button -->
+        <button id="next-word" class="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-medium px-4 py-2 rounded-lg">
+          Next Word
+        </button>
       </div>
     </div>
 
@@ -252,8 +265,9 @@
     <script src="/js/components/cards.js"></script>
     <script src="/js/components/aboutus.js"></script>
 
-    <!-- Modal Script with Randomizer -->
+    <!-- ✅ FIXED WORD OF THE DAY SCRIPT -->
     <script>
+    document.addEventListener("DOMContentLoaded", () => {
       const words = [
         { script: "ᜀᜋ", meaning: "Ama (Father)" },
         { script: "ᜉᜓᜃ", meaning: "Pook (Place)" },
@@ -267,19 +281,31 @@
         { script: "ᜀᜎᜓᜎ᜔", meaning: "Alul (Flow)" }
       ];
 
+      let currentIndex = 0;
+
       const wordBtn = document.getElementById("word-btn");
       const modal = document.getElementById("word-modal");
       const closeModal = document.getElementById("close-modal");
+      const nextWord = document.getElementById("next-word");
       const wordScript = document.getElementById("word-script");
       const wordMeaning = document.getElementById("word-meaning");
 
-      wordBtn.addEventListener("click", () => {
-        const randomWord = words[Math.floor(Math.random() * words.length)];
-        wordScript.textContent = randomWord.script;
-        wordMeaning.textContent = "Meaning: " + randomWord.meaning;
+      function showWord(index) {
+        const word = words[index];
+        wordScript.textContent = word.script;
+        wordMeaning.textContent = word.meaning;
+      }
 
+      wordBtn.addEventListener("click", () => {
+        currentIndex = Math.floor(Math.random() * words.length);
+        showWord(currentIndex);
         modal.classList.remove("hidden");
         modal.classList.add("flex");
+      });
+
+      nextWord.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % words.length;
+        showWord(currentIndex);
       });
 
       closeModal.addEventListener("click", () => {
@@ -293,6 +319,7 @@
           modal.classList.remove("flex");
         }
       });
+    });
     </script>
   </body>
 </html>
